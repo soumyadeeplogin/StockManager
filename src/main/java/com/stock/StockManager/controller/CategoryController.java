@@ -1,5 +1,6 @@
 package com.stock.StockManager.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +15,7 @@ public class CategoryController {
 		this.categoryRepository = categoryRepository;
 	}
 	
-	@RequestMapping("/categories")
+	@GetMapping("/categories")
 	public Iterable<Category> getCategories()
 	{
 		return categoryRepository.findAll();
