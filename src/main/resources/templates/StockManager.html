@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Jokes</title>
+</head>
+<body>
+<h1>Stock Manager!</h1>
+
+
+<table>
+	<th>Category</th>
+	<th>Item</th>
+	<th>Quantity</th>
+
+	<th:block th:each="category : ${categories}">
+		<tr>
+			<td th:text="${category.type}">CategoryName</td>
+			
+			<th:block th:each="item : ${category.items}">
+					<td th:text="${item.name}">ItemName</td>
+					<td th:text="${item.quantity}">Quantity</td>				
+			</th:block>
+			
+		</tr>
+	</th:block>
+	   
+	</table>
+
+</body>
+</html>
+      		

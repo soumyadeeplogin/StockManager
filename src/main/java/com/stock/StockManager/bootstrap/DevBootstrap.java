@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+
 import com.stock.StockManager.model.Category;
 import com.stock.StockManager.model.Item;
 import com.stock.StockManager.repository.CategoryRepository;
@@ -28,34 +29,25 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>{
 	 
 	private void initData()
 	{
-		Category masala = new Category();
-		masala.setType("Masala");
-		
-		Category staples = new Category();
-		staples.setType("Staples");
 		
 		
-		Item chilliPowder = new Item();
-		chilliPowder.setName("Chilli Powder");
-		chilliPowder.setQuantity(2L);
-		chilliPowder.setBarcode(564897546L);
-		masala.getItems().add(chilliPowder);
 		
-		//category.getItems().add(chilliPowder);
-		itemsRepository.save(chilliPowder);
+		Item i1 = new Item();
+		i1.setName("Chilli Powder");
+		i1.setQuantity(1L);
 		
+		itemsRepository.save(i1);
 		
-		Item atta = new Item();
-		atta.setName("Ashirbad");
-		atta.setQuantity(10L);
-		atta.setBarcode(89789340L);
-		staples.getItems().add(atta);
-//		atta.setCategory("staple");
+		Item i2 = new Item();
+		i2.setName("Cumin Powder");
+		i2.setQuantity(2L);
 		
-		//category.getItems().add(atta);
-		itemsRepository.save(atta);
-		categoryRepository.save(masala);
-		categoryRepository.save(staples);
+		itemsRepository.save(i2);
+		
+		Category c1 = new Category("Masala");
+		c1.getItems().add(i1);
+		c1.getItems().add(i2);
+		categoryRepository.save(c1);	
 
 	}
 }
